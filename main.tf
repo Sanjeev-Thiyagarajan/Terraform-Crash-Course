@@ -80,13 +80,18 @@ resource "aws_subnet" "subnet-2" {
 #   route {
 #     cidr_block = "0.0.0.0/0"
 #     gateway_id = aws_internet_gateway.gw.id
+#     egress_only_gateway_id: ""
+#     ipv6_cidr_block: ""
+#     instance_id: ""
+#     local_gateway_id: ""
+#     nat_gateway_id: ""
+#     network_interface_id: ""
+#     transit_gateway_id: ""
+#     vpc_peering_connection_id: ""
+#     vpc_endpoint_id: ""
+#     carrier_gateway_id: ""
+#     destination_prefix_list_id: ""
 #   }
-
-#   route {
-#     ipv6_cidr_block = "::/0"
-#     gateway_id      = aws_internet_gateway.gw.id
-#   }
-
 #   tags = {
 #     Name = "Prod"
 #   }
@@ -98,7 +103,6 @@ resource "aws_subnet" "subnet-2" {
 #   vpc_id            = aws_vpc.prod-vpc.id
 #   cidr_block        = "10.0.1.0/24"
 #   availability_zone = "us-east-1a"
-
 #   tags = {
 #     Name = "prod-subnet"
 #   }
@@ -121,6 +125,9 @@ resource "aws_subnet" "subnet-2" {
 #     to_port     = 443
 #     protocol    = "tcp"
 #     cidr_blocks = ["0.0.0.0/0"]
+#     prefix_list_ids = []
+#     security_groups = []
+#     self = false
 #   }
 #   ingress {
 #     description = "HTTP"
@@ -128,6 +135,9 @@ resource "aws_subnet" "subnet-2" {
 #     to_port     = 80
 #     protocol    = "tcp"
 #     cidr_blocks = ["0.0.0.0/0"]
+#     prefix_list_ids = []
+#     security_groups = []
+#     self = false
 #   }
 #   ingress {
 #     description = "SSH"
@@ -135,13 +145,20 @@ resource "aws_subnet" "subnet-2" {
 #     to_port     = 22
 #     protocol    = "tcp"
 #     cidr_blocks = ["0.0.0.0/0"]
+#     prefix_list_ids = []
+#     security_groups = []
+#     self = false
 #   }
 
 #   egress {
+#     description = "for all outgoing traffics"
 #     from_port   = 0
 #     to_port     = 0
 #     protocol    = "-1"
 #     cidr_blocks = ["0.0.0.0/0"]
+#     prefix_list_ids = []
+#     security_groups = []
+#     self = false
 #   }
 
 #   tags = {
